@@ -30,5 +30,6 @@ _CompartirIgual_ — Si remezcla, transforma o crea a partir del material, debe 
 # Links
 
 - Documento de Fase 1 [Drive](https://drive.google.com/file/d/1yH7MIYxgR-4j7YdUtgYYkTaYvy6ebyzK/view)
+- Video demostrativo [Drive](https://drive.google.com/file/d/1ztX12ogQgrnp8bDNaaLFZnflYGZTCBjo/view?usp=sharing)
 - Mockups [Figma](https://www.figma.com/file/QB7p4cMd8uEbqnqWgBoz3b/Aplicacion-Comprale?node-id=0%3A1)
 - Tablero de trabajo [Jira](https://marlin403.atlassian.net/jira/software/projects/PIC/boards/2)

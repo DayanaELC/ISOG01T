@@ -4,8 +4,8 @@ Cómprale! es una plataforma móbil, para que los usuarios puedan ralizar compra
 
 # Para utilizar
 De momento se puede hacer uso de las siguientes credeciales para el inicio de sesión a la aplicación, se tendrá una conexión completa a datos de la base de datos.</br>
-user: Estudiante</br>
-pass: iso2021
+usuario: *Estudiante*</br>
+contraseña: *iso2021*
 
 # Herramientas de desarrollo y tecnologías
  - Android Studio 4.2
@@ -20,7 +20,7 @@ para cualquier propósito, incluso comercialmente.
 
 ### Bajo los siguientes términos
 _Atribución_ — Usted debe dar crédito de manera adecuada, brindar un enlace a la licencia, e indicar si se han realizado cambios. Puede hacerlo en cualquier forma razonable, pero no de forma tal que sugiera que usted o su uso tienen el apoyo de la licenciante.</br>
-_CompartirIgual_ — Si remezcla, transforma o crea a partir del material, debe distribuir su contribución bajo la lamisma licencia del original.
+_CompartirIgual_ — Si remezcla, transforma o crea a partir del material, debe distribuir su contribución bajo la misma licencia del original.
 
 # Contribuidores
 - Marlin José Ardon Martinez AM120254

@@ -3,9 +3,21 @@ package com.example.comprale;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 public class MainActivityContenedor extends AppCompatActivity {
 
@@ -14,6 +26,8 @@ public class MainActivityContenedor extends AppCompatActivity {
     Button btnProductos;
     Button btnCarrito;
     Button btnPerfil;
+
+    Variables variables = new Variables();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,4 +74,28 @@ public class MainActivityContenedor extends AppCompatActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("¿Está seguro que desea salir de la aplicación?");
+        builder.setCancelable(false).setPositiveButton("Aceptar", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+                MainActivityContenedor.this.finish();
+                Intent intent = new Intent(MainActivityContenedor.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
 }

@@ -15,12 +15,14 @@ import java.util.List;
 public class GridAdapter extends BaseAdapter {
     Context contexto;
     List<String> ListaImagenes;
+    List<Integer> ListaId;
 
     Variables variables = new Variables();
 
-    public GridAdapter(Context contexto, List<String> listaImagenes) {
+    public GridAdapter(Context contexto, List<String> listaImagenes, List<Integer> listaId) {
         this.contexto = contexto;
         ListaImagenes = listaImagenes;
+        ListaId = listaId;
     }
 
     @Override
@@ -50,7 +52,7 @@ public class GridAdapter extends BaseAdapter {
         Item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                variables.setItemGridProductos(i);
+                variables.setItemGridProductos(ListaId.get(i));
                 Intent intent = new Intent(contexto, MainActivityDetalleProducto.class);
                 contexto.startActivity(intent);
             }

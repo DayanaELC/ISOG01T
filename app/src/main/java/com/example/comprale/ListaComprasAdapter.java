@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class ListaComprasAdapter extends BaseAdapter {
@@ -19,6 +20,7 @@ public class ListaComprasAdapter extends BaseAdapter {
     List<String> ListaNombres;
     List<Double> ListaPrecios;
     List<String> ListaInfo;
+    DecimalFormat df = new DecimalFormat("###,###,##0.00");
 
     Variables variables = new Variables();
 
@@ -57,7 +59,7 @@ public class ListaComprasAdapter extends BaseAdapter {
         TextView txtInfo = (TextView)vista.findViewById(R.id.txtInfo);
         Glide.with(imgProducto.getContext()).load(ListaImagenes.get(i)).into(imgProducto);
         txtNombre.setText(ListaNombres.get(i));
-        txtPrecio.setText("$"+ListaPrecios.get(i));
+        txtPrecio.setText("$"+df.format(ListaPrecios.get(i)));
         txtInfo.setText(ListaInfo.get(i));
 
         return vista;

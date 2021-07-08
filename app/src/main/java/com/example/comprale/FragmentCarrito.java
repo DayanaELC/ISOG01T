@@ -1,5 +1,6 @@
 package com.example.comprale;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,9 +15,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +27,17 @@ public class FragmentCarrito extends Fragment {
 
     ListView ListaCompas;
     Button btnPagar;
+    TextView txtTotal;
 
     ArrayList<String> ListaImagen=new ArrayList<>();
-    ArrayList<String> ListaNombres=new ArrayList<>();
-    ArrayList<Double> ListaPrecios=new ArrayList<>();
-    ArrayList<Integer> ListaCantidad=new ArrayList<>();
+
+    Double total=0.0;
 
     ListaComprasAdapter adapter = null;
+
+    Variables variables = new Variables();
+
+    DecimalFormat df = new DecimalFormat("###,###,##0.00");
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -39,12 +46,14 @@ public class FragmentCarrito extends Fragment {
         final View vista =  inflater.inflate(R.layout.fragment_carrito, container, false);
         ListaCompas=(ListView)vista.findViewById(R.id.listaCompra);
         btnPagar = (Button)vista.findViewById(R.id.btnPagar);
+        txtTotal = (TextView)vista.findViewById(R.id.txtTotal);
 
         CargarLista();
 
         btnPagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                variables.setTotalPagar(total);
                 Intent intent = new Intent(getContext(), MainActivitPago.class);
                 startActivity(intent);
             }
@@ -54,17 +63,19 @@ public class FragmentCarrito extends Fragment {
 
     public void CargarLista(){
         ListaImagen.clear();
-        ListaCantidad.clear();
-        ListaPrecios.clear();
-        ListaNombres.clear();
-        for (int i=0; i<3; i++){
-            ListaImagen.add("https://static.miweb.padigital.es/var/m_3/3f/3f5/46132/631340-no-disponible.jpg");
-            ListaNombres.add("Nombre del producto " + (i+1));
-            ListaPrecios.add(35.56+i);
-            ListaCantidad.add(50-i*2);
+        if (variables.getListaCodigoProducto().isEmpty()){
+            Toast.makeText(getContext(), "No hay productos agregados", Toast.LENGTH_SHORT).show();
+            btnPagar.setEnabled(false);
         }
-        adapter = new ListaComprasAdapter(getContext(), ListaImagen);
-        ListaCompas.setAdapter(adapter);
+        else {
+            for (int i=0; i<variables.getListaCodigoProducto().size(); i++){
+                ListaImagen.add(variables.getListaImagen().get(i));
+                total = total + (Double.parseDouble(variables.getListaPrecioProducto().get(i))*Integer.parseInt(variables.getListaCantidadProducto().get(i)));
+            }
+            txtTotal.setText("$"+df.format(total));
+            adapter = new ListaComprasAdapter(getContext(), ListaImagen);
+            ListaCompas.setAdapter(adapter);
+        }
     }
 
     public class ListaComprasAdapter extends BaseAdapter {
@@ -102,37 +113,26 @@ public class FragmentCarrito extends Fragment {
             TextView txtPrecio = (TextView)vista.findViewById(R.id.txtPrecio);
             final TextView txtCantidad = (TextView)vista.findViewById(R.id.cantidad);
             TextView btnEliminar = (TextView)vista.findViewById(R.id.btnEliminar);
-            Button btnMas=(Button)vista.findViewById(R.id.btnMas);
-            Button btnMenos=(Button)vista.findViewById(R.id.btnMenos);
             Glide.with(imgProducto.getContext()).load(ListaImagenes.get(i)).into(imgProducto);
-            txtNombre.setText(ListaNombres.get(i));
-            txtPrecio.setText("$"+ListaPrecios.get(i).toString());
-            txtCantidad.setText(ListaCantidad.get(i).toString());
+            txtNombre.setText(variables.getListaNombreProducto().get(i)+"\n\n$"+df.format(Double.parseDouble(variables.getListaPrecioProducto().get(i))));
+            txtPrecio.setText("$"+(df.format(Double.parseDouble(variables.getListaPrecioProducto().get(i))*Double.parseDouble(variables.getListaCantidadProducto().get(i)))));
+            //txtPrecio.setText("$"+Double.parseDouble(variables.getListaPrecioProducto().get(i))*Double.parseDouble(variables.getListaCantidadProducto().get(i)));
+            txtCantidad.setText(variables.getListaCantidadProducto().get(i));
 
             btnEliminar.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     //ListaImagenes.remove(i);
+                    total = total - Double.parseDouble(variables.getListaPrecioProducto().get(i))*Double.parseDouble(variables.getListaCantidadProducto().get(i));
+                    variables.setTotalPagar(total);
+                    txtTotal.setText("$"+df.format(total));
                     ListaImagen.remove(i);
-                    ListaNombres.remove(i);
-                    ListaPrecios.remove(i);
-                    ListaCantidad.remove(i);
+                    variables.getListaImagen().remove(i);
+                    variables.getListaCodigoProducto().remove(i);
+                    variables.getListaNombreProducto().remove(i);
+                    variables.getListaPrecioProducto().remove(i);
+                    variables.getListaCantidadProducto().remove(i);
                     adapter.notifyDataSetChanged();
-                }
-            });
-
-            btnMenos.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (Integer.parseInt(txtCantidad.getText().toString())>1){
-                        txtCantidad.setText(""+(Integer.parseInt(txtCantidad.getText().toString())-1));
-                    }
-                }
-            });
-            btnMas.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    txtCantidad.setText(""+(Integer.parseInt(txtCantidad.getText().toString())+1));
                 }
             });
 

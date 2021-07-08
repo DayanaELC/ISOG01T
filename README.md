@@ -3,9 +3,8 @@
 Cómprale! es una plataforma móbil, para que los usuarios puedan ralizar compra y venta de productos
 
 # Para utilizar
-De momento se puede hacer uso de las siguientes credeciales para el inicio de sesión a la aplicación, se tendrá una conexión completa a datos de la base de datos.</br>
-usuario: *Estudiante*</br>
-contraseña: *iso2021*
+Instala la aplicación desde el archivo "comprale.apk" recuerda activar la opción de permitir orígenes desconocidos.
+Puedes crear una cuenta con tu correo electrónico y comienzar a utilizarla luego de la instalación. Puedes ver el manual de uso para más ayuda.
 
 # Herramientas de desarrollo y tecnologías
  - Android Studio 4.2
@@ -31,5 +30,6 @@ _CompartirIgual_ — Si remezcla, transforma o crea a partir del material, debe 
 
 - Documento de Fase 1 [Drive](https://drive.google.com/file/d/1yH7MIYxgR-4j7YdUtgYYkTaYvy6ebyzK/view)
 - Video demostrativo [Drive](https://drive.google.com/file/d/1ztX12ogQgrnp8bDNaaLFZnflYGZTCBjo/view?usp=sharing)
+- **Manual de usuario** [Drive](https://drive.google.com/file/d/1B9qbIduDnag8Xz3-A0oCkR59JA64FeN0/view?usp=sharing)
 - Mockups [Figma](https://www.figma.com/file/QB7p4cMd8uEbqnqWgBoz3b/Aplicacion-Comprale?node-id=0%3A1)
 - Tablero de trabajo [Jira](https://marlin403.atlassian.net/jira/software/projects/PIC/boards/2)

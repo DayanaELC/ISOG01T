@@ -91,6 +91,30 @@
                 android:padding="10dp">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtInputDireccion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/direccion"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Dirección"
+                        android:singleLine="true"
+                        android:textColor="#000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:orientation="horizontal"
+                android:padding="10dp">
+
+                <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/txtInputClave"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,7 +176,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Aceptao los Térmitos y Condiciones" />
+                        android:text="Acepto los Térmitos y Condiciones" />
                 </LinearLayout>
 
                 <LinearLayout

@@ -15,31 +15,74 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:paddingLeft="10dp"
+            android:paddingTop="10dp"
+            android:paddingRight="10dp">
 
-            <ImageView
-                android:id="@+id/imageView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                tools:src="@tools:sample/avatars" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/txtInputUsuario"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <EditText
+                        android:id="@+id/txtBuscar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Buscar un producto"
+                        android:singleLine="true"
+                        android:textColor="#000" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/btnBuscar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36sp"
+                    android:background="@drawable/boton_violeta"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp"
+                    android:text="Buscar"
+                    android:textAllCaps="false"
+                    android:textColor="@color/design_default_color_background"
+                    android:textSize="18sp" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
             android:layout_weight="0"
-            android:orientation="horizontal"
-            android:padding="10dp">
+            android:gravity="center"
+            android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView"
+            <Button
+                android:id="@+id/btnTodo"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:padding="10dp"
-                android:text="Listado de productos"
-                android:textColor="@color/design_default_color_on_secondary"
+                android:layout_height="36sp"
+                android:background="@drawable/boton_violeta"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="Mostrar todo"
+                android:textAllCaps="false"
+                android:textColor="@color/design_default_color_background"
                 android:textSize="18sp" />
         </LinearLayout>
 
